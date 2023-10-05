@@ -1,6 +1,8 @@
 def arithmetic_arranger(problems, resultsDisplay):
 
     problemLength = len(problems)
+    if problemLength > 4:
+        return "Error: Too many problems."
     #print(problemLength)
 
     operandTop = ""
@@ -21,6 +23,12 @@ def arithmetic_arranger(problems, resultsDisplay):
         for character in equationStr:
             if character == "-":
               operator = character
+            elif character == "+":
+              operator = character
+            elif character == "/":
+              return "Error: Operator must be '+' or '-'."
+            elif character == "*":
+              return "Error: Operator must be '+' or '-'."
         #print(operator)
                
         operatorPosition = equationStr.find(operator)
@@ -83,13 +91,18 @@ def arithmetic_arranger(problems, resultsDisplay):
                   
         resultRow = resultRow + str(result)
 
-    print(operandTopRow)
-    print(operandLowRow)
+    # print(operandTopRow)
+    # print(operandLowRow)
     underRuleLength = len(operandTopRow)
     while underRuleLength > 0:
         underRuleRow = underRuleRow + "-"
         underRuleLength = underRuleLength - 1
-    print(underRuleRow)
+    # print(underRuleRow)
+    # if resultsDisplay == True:
+    #     print(resultRow)
+   
+
     if resultsDisplay == True:
-        print(resultRow)
-    return
+       return operandTopRow + "\n" + operandLowRow + "\n" + underRuleRow + "\n" + resultRow
+    else: 
+       return operandTopRow + "\n" + operandLowRow + "\n" + underRuleRow
